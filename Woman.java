@@ -18,23 +18,32 @@ public class Woman {
 
     //method
     public void getGas(double cashSpent){
+
+        if (this.vehicle.isNeedsGas() && this.getCash() >= 0){
+
         this.setCash(this.getCash() - cashSpent);
-    if (this.vehicle.isNeedsGas() && this.cash >= 0){
+
         if (this.vehicle.getMotor() instanceof MotorDiesel){
             gasBought = cashSpent / this.gasStation.getDieselPrice();
             this.gasStation.setDieselStocks(this.gasStation.getDieselStocks() - gasBought);
         }
+
         else if (this.vehicle.getMotor() instanceof MotorEssence){
             this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + (cashSpent / this.gasStation.getEssencePrice()));
         }
+
         else if (this.vehicle.getMotor() instanceof MotorElectrique){
             this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + (cashSpent / this.gasStation.getElectricityPrice()));
         }
-    }
+    } else {
+            System.out.println("you don't have enough money/don't need gas that badly!");
+        }
         this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + gasBought);
+        this.vehicle.setNeedsGas(false);
         System.out.println("You have put " + gasBought + "L in your tank for " + cashSpent + "E." );
         System.out.println("You have " + this.getCash() + "E left.");
         System.out.println("You should be able to drive for about " + this.vehicle.getFuelLeft() / this.vehicle.getMotor().getFuelEfficiency() + "km.");
+
     }
 
 

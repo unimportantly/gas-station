@@ -21,9 +21,6 @@ public class GasStation {
         this.electricityStocks = electricityStocks;
     }
     //methods
-    public void hasGas(){
-
-    }
 
     //getters & setters
     public double getDieselPrice() {

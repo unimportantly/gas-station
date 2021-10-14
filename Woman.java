@@ -7,7 +7,6 @@ public class Woman {
     private Vehicle vehicle;
     private GasStation gasStation;
     private double gasBought;
-    private double cashLeft;
 
     //constructor
     public Woman(){}
@@ -36,7 +35,6 @@ public class Woman {
         System.out.println("You have put " + gasBought + "L in your tank for " + cashSpent + "E." );
         System.out.println("You have " + this.getCash() + "E left.");
         System.out.println("You should be able to drive for about " + this.vehicle.getFuelLeft() / this.vehicle.getMotor().getFuelEfficiency() + "km.");
-
     }
 
 
@@ -52,6 +50,12 @@ public class Woman {
     }
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+    public double getGasBought() {
+        return gasBought;
+    }
+    public void setGasBought(double gasBought) {
+        this.gasBought = gasBought;
     }
 
     @Override

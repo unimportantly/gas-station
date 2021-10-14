@@ -22,12 +22,14 @@ public class Vehicle {
     //method
     public void drive(double distance) {
         this.motor.setMileage(this.motor.getMileage() + distance);
+        System.out.println("you have driven " + distance + "km.");
     }
-    public void fuelConsumption(double distance) {
-        this.fuelCapacity -= distance * (this.motor.getFuelEfficiency() / 100);
+    public boolean fuelConsumption(double distance) {
+        this.fuelLeft -= distance * (this.motor.getFuelEfficiency() / 100);
         if (this.fuelLeft <= (this.fuelCapacity / 5)){
         needsGas = true;
-    }}
+    }return needsGas;
+    }
     //getters & setters
     public String getBrand() {
         return brand;

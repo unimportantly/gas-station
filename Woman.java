@@ -19,23 +19,22 @@ public class Woman {
 
     //method
     public void getGas(double cashSpent){
-        cashLeft = cash - cashSpent;
-    if (this.vehicle.isNeedsGas() == true && cashLeft >= 0){
+        this.setCash(this.getCash() - cashSpent);
+    if (this.vehicle.isNeedsGas() && this.cash >= 0){
         if (this.vehicle.getMotor() instanceof MotorDiesel){
             gasBought = cashSpent / this.gasStation.getDieselPrice();
-            this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + gasBought);
             this.gasStation.setDieselStocks(this.gasStation.getDieselStocks() - gasBought);
-            System.out.println("You have put " + gasBought + "L in your tank for " + cashSpent + "E." );
-            System.out.println("You have " + cashLeft + "E left.");
-            System.out.println("You should be able to drive for about " + this.vehicle.getFuelLeft() / this.vehicle.getMotor().getFuelEfficiency() + "km.");
-        } else if (this.vehicle.getMotor() instanceof MotorEssence){
+        }
+        else if (this.vehicle.getMotor() instanceof MotorEssence){
             this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + (cashSpent / this.gasStation.getEssencePrice()));
-        } else if (this.vehicle.getMotor() instanceof MotorElectrique){
+        }
+        else if (this.vehicle.getMotor() instanceof MotorElectrique){
             this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + (cashSpent / this.gasStation.getElectricityPrice()));
         }
-    }   cash -= cashSpent;
+    }
+        this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + gasBought);
         System.out.println("You have put " + gasBought + "L in your tank for " + cashSpent + "E." );
-        System.out.println("You have " + cashLeft + "E left.");
+        System.out.println("You have " + this.getCash() + "E left.");
         System.out.println("You should be able to drive for about " + this.vehicle.getFuelLeft() / this.vehicle.getMotor().getFuelEfficiency() + "km.");
 
     }

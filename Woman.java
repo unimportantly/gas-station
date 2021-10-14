@@ -40,9 +40,9 @@ public class Woman {
         }
         this.vehicle.setFuelLeft(this.vehicle.getFuelLeft() + gasBought);
         this.vehicle.setNeedsGas(false);
-        System.out.println("You have put " + gasBought + "L in your tank for " + cashSpent + "E." );
+        System.out.println("You have put " + gasBought + "L in your tank for " + cashSpent + "E. You now have " + this.vehicle.getFuelLeft() );
         System.out.println("You have " + this.getCash() + "E left.");
-        System.out.println("You should be able to drive for about " + this.vehicle.getFuelLeft() / this.vehicle.getMotor().getFuelEfficiency() + "km.");
+        System.out.println("You should be able to drive for about " + (this.vehicle.getFuelLeft() * 100) / this.vehicle.getMotor().getFuelEfficiency() + "km.");
 
     }
 

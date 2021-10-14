@@ -12,8 +12,8 @@ public class Truck extends Vehicle{
     public Truck(int passengers) {
         this.passengers = passengers;
     }
-    public Truck(String brand, String colour, double price, Motor motor, double fuelCapacity, int passengers) {
-        super(brand, colour, price, motor, fuelCapacity);
+    public Truck(String brand, String colour, double price, Motor motor, double fuelCapacity, double fuelLeft, int passengers) {
+        super(brand, colour, price, motor, fuelCapacity, fuelLeft);
         this.passengers = passengers;
     }
 

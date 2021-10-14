@@ -6,30 +6,37 @@ public class Vehicle {
     private double price;
     private Motor motor;
     private double fuelCapacity;
-    private double fuelLeft = fuelCapacity;
     private boolean needsGas = false;
+    private double fuelLeft;
 
     //constructors
     public Vehicle(){}
-    public Vehicle(String brand, String colour, double price, Motor motor, double fuelCapacity) {
+    public Vehicle(String brand, String colour, double price, Motor motor, double fuelCapacity, double fuelLeft) {
         this.brand = brand;
         this.colour = colour;
         this.price = price;
         this.motor = motor;
         this.fuelCapacity = fuelCapacity;
+        this.fuelLeft = fuelLeft;
     }
 
     //method
-    public void drive(double distance) {
+    public boolean drive(double distance) {
         this.motor.setMileage(this.motor.getMileage() + distance);
-        System.out.println("you have driven " + distance + "km.");
-    }
-    public boolean fuelConsumption(double distance) {
-        this.fuelLeft -= distance * (this.motor.getFuelEfficiency() / 100);
-        if (this.fuelLeft <= (this.fuelCapacity / 5)){
-        needsGas = true;
-    }return needsGas;
-    }
+        System.out.println("you have driven " + distance + "km. You've driven a total of " + this.motor.getMileage() + "km!");
+        this.setFuelLeft(this.getFuelLeft() - distance * (this.motor.getFuelEfficiency() / 100));
+        System.out.println("you have " + fuelLeft +"L of gas left.");
+        if (this.fuelLeft <= (this.fuelCapacity / 5) && this.fuelLeft > 0){
+            needsGas = true;
+            System.out.println("you need gas!");
+        }else if (this.fuelLeft < 0){
+            System.out.println("you ran out of gas, you're gonna die in the wilderness now, tough luck.");
+        }else {
+            System.out.println("you don't need gas");
+        }return needsGas;
+        }
+
+
     //getters & setters
     public String getBrand() {
         return brand;

@@ -12,8 +12,8 @@ public class Car extends Vehicle{
     public Car(int passengers) {
         this.passengers = passengers;
     }
-    public Car(String brand, String colour, double price, Motor motor, double fuelCapacity, int passengers) {
-        super(brand, colour, price, motor, fuelCapacity);
+    public Car(String brand, String colour, double price, Motor motor, double fuelCapacity, double fuelLeft, int passengers) {
+        super(brand, colour, price, motor, fuelCapacity, fuelLeft);
         this.passengers = passengers;
     }
 
